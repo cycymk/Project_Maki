@@ -1,0 +1,28 @@
+name: 新功能或改進
+description: 想加的東西、想改的玩法或畫面
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: 想做什麼
+      placeholder: 例如：老街的阿給店可以走進去，買一份阿給柴柴會開心地轉圈
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: 怎樣算完成
+      description: 寫成可以檢查的條件，agent 會照這個做
+      placeholder: |
+        - 走到阿給店門口會出現「進入」提示
+        - 手機上也能操作
+  - type: dropdown
+    id: agent
+    attributes:
+      label: 想交給誰
+      options:
+        - 還沒決定
+        - Codex
+        - Gemini

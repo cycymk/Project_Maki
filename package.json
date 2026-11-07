@@ -1,0 +1,17 @@
+{
+  "name": "project-maki",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:lan": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --port 4173",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.48.2",
+    "vite": "5.4.10"
+  }
+}
