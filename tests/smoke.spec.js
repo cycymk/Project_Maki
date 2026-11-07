@@ -11,16 +11,12 @@ test('game loads, renders and has no errors', async ({ page }) => {
   await expect(page.locator('#loading')).toHaveCount(0, { timeout: 30_000 });
   await expect(page.locator('#clock')).not.toHaveText('--:--');
 
-  // canvas actually drew something (not a single flat color)
-  const varied = await page.evaluate(() => {
-    const c = document.querySelector('#c');
-    const g = document.createElement('canvas'); g.width = 32; g.height = 32;
-    const x = g.getContext('2d'); x.drawImage(c, 0, 0, 32, 32);
-    const d = x.getImageData(0, 0, 32, 32).data; const set = new Set();
-    for (let i = 0; i < d.length; i += 16) set.add(`${d[i] >> 4},${d[i + 1] >> 4},${d[i + 2] >> 4}`);
-    return set.size;
-  });
-  expect(varied).toBeGreaterThan(8);
+  // canvas actually drew something: a flat single-color frame compresses to a tiny PNG.
+  // (Reading the WebGL canvas with drawImage returns blank without preserveDrawingBuffer,
+  // so we use a real screenshot instead.)
+  await page.waitForTimeout(1500);
+  const shot = await page.locator('#c').screenshot();
+  expect(shot.length).toBeGreaterThan(30000);
   expect(errors).toEqual([]);
 });
 
