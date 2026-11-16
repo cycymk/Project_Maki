@@ -18,3 +18,5 @@
 
 \### 交接紀錄
 
+- T1 Builder 完成，狀態 READY_FOR_REVIEW：在 utils.py 實作 format_duration(seconds: int) -> str，以 divmod(seconds, 60) 取得分鐘與秒數，兩欄至少補零至兩位，分鐘不以 60 取餘數；未修改測試檔。
+
