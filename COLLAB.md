@@ -18,3 +18,5 @@
 
 \### 交接紀錄
 
+
+- T1 Tester 完成，狀態 READY_FOR_REVIEW
